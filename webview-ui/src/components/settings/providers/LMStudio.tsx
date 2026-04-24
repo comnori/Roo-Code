@@ -123,6 +123,66 @@ export const LMStudio = ({ apiConfiguration, setApiConfigurationField }: LMStudi
 				errorMessage={modelNotAvailableError}
 				hidePricing
 			/>
+
+			<div className="flex gap-4">
+				<VSCodeTextField
+					value={apiConfiguration?.lmStudioTopP !== undefined ? apiConfiguration.lmStudioTopP.toString() : ""}
+					type="text"
+					onInput={(e: any) => {
+						const value = e.target.value
+						if (!value) {
+							setApiConfigurationField("lmStudioTopP", undefined)
+						} else {
+							const parsed = parseFloat(value)
+							if (!isNaN(parsed)) {
+								setApiConfigurationField("lmStudioTopP", parsed)
+							}
+						}
+					}}
+					placeholder="1.0"
+					className="flex-1">
+					<label className="block font-medium mb-1">{t("settings:providers.lmStudio.topP")}</label>
+				</VSCodeTextField>
+
+				<VSCodeTextField
+					value={apiConfiguration?.lmStudioTopK !== undefined ? apiConfiguration.lmStudioTopK.toString() : ""}
+					type="text"
+					onInput={(e: any) => {
+						const value = e.target.value
+						if (!value) {
+							setApiConfigurationField("lmStudioTopK", undefined)
+						} else {
+							const parsed = parseInt(value, 10)
+							if (!isNaN(parsed)) {
+								setApiConfigurationField("lmStudioTopK", parsed)
+							}
+						}
+					}}
+					placeholder="40"
+					className="flex-1">
+					<label className="block font-medium mb-1">{t("settings:providers.lmStudio.topK")}</label>
+				</VSCodeTextField>
+
+				<VSCodeTextField
+					value={apiConfiguration?.lmStudioMinP !== undefined ? apiConfiguration.lmStudioMinP.toString() : ""}
+					type="text"
+					onInput={(e: any) => {
+						const value = e.target.value
+						if (!value) {
+							setApiConfigurationField("lmStudioMinP", undefined)
+						} else {
+							const parsed = parseFloat(value)
+							if (!isNaN(parsed)) {
+								setApiConfigurationField("lmStudioMinP", parsed)
+							}
+						}
+					}}
+					placeholder="0.05"
+					className="flex-1">
+					<label className="block font-medium mb-1">{t("settings:providers.lmStudio.minP")}</label>
+				</VSCodeTextField>
+			</div>
+
 			<Checkbox
 				checked={apiConfiguration?.lmStudioSpeculativeDecodingEnabled === true}
 				onChange={(checked) => {

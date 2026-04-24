@@ -280,6 +280,9 @@ const lmStudioSchema = baseProviderSettingsSchema.extend({
 	lmStudioBaseUrl: z.string().optional(),
 	lmStudioDraftModelId: z.string().optional(),
 	lmStudioSpeculativeDecodingEnabled: z.boolean().optional(),
+	lmStudioTopP: z.number().optional(),
+	lmStudioTopK: z.number().optional(),
+	lmStudioMinP: z.number().optional(),
 })
 
 const geminiSchema = apiModelIdProviderModelSchema.extend({
