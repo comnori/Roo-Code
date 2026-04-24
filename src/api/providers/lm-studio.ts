@@ -83,7 +83,12 @@ export class LmStudioHandler extends BaseProvider implements SingleCompletionHan
 		let assistantText = ""
 
 		try {
-			const params: OpenAI.Chat.ChatCompletionCreateParamsStreaming & { draft_model?: string } = {
+			const params: OpenAI.Chat.ChatCompletionCreateParamsStreaming & {
+				draft_model?: string
+				top_p?: number
+				top_k?: number
+				min_p?: number
+			} = {
 				model: this.getModel().id,
 				messages: openAiMessages,
 				temperature: this.options.modelTemperature ?? LMSTUDIO_DEFAULT_TEMPERATURE,
@@ -95,6 +100,16 @@ export class LmStudioHandler extends BaseProvider implements SingleCompletionHan
 
 			if (this.options.lmStudioSpeculativeDecodingEnabled && this.options.lmStudioDraftModelId) {
 				params.draft_model = this.options.lmStudioDraftModelId
+			}
+
+			if (this.options.lmStudioTopP !== undefined) {
+				params.top_p = this.options.lmStudioTopP
+			}
+			if (this.options.lmStudioTopK !== undefined) {
+				params.top_k = this.options.lmStudioTopK
+			}
+			if (this.options.lmStudioMinP !== undefined) {
+				params.min_p = this.options.lmStudioMinP
 			}
 
 			let results
@@ -198,6 +213,16 @@ export class LmStudioHandler extends BaseProvider implements SingleCompletionHan
 			// Add draft model if speculative decoding is enabled and a draft model is specified
 			if (this.options.lmStudioSpeculativeDecodingEnabled && this.options.lmStudioDraftModelId) {
 				params.draft_model = this.options.lmStudioDraftModelId
+			}
+
+			if (this.options.lmStudioTopP !== undefined) {
+				params.top_p = this.options.lmStudioTopP
+			}
+			if (this.options.lmStudioTopK !== undefined) {
+				params.top_k = this.options.lmStudioTopK
+			}
+			if (this.options.lmStudioMinP !== undefined) {
+				params.min_p = this.options.lmStudioMinP
 			}
 
 			let response

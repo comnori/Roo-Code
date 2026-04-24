@@ -451,6 +451,9 @@
 		"lmStudio": {
 			"baseUrl": "기본 URL (선택사항)",
 			"modelId": "모델 ID",
+			"topP": "Top P",
+			"topK": "Top K",
+			"minP": "Min P",
 			"speculativeDecoding": "추론 디코딩 활성화",
 			"draftModelId": "초안 모델 ID",
 			"draftModelDesc": "추론 디코딩이 올바르게 작동하려면 초안 모델이 동일한 모델 패밀리에서 와야 합니다.",

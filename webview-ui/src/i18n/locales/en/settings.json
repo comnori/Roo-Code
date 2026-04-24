@@ -514,6 +514,9 @@
 		"lmStudio": {
 			"baseUrl": "Base URL (optional)",
 			"modelId": "Model ID",
+			"topP": "Top P",
+			"topK": "Top K",
+			"minP": "Min P",
 			"speculativeDecoding": "Enable Speculative Decoding",
 			"draftModelId": "Draft Model ID",
 			"draftModelDesc": "Draft model must be from the same model family for speculative decoding to work correctly.",
